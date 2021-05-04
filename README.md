@@ -18,8 +18,14 @@ So like it's shown below my output (in [2] output size was 4 times smaller than 
 Original structure of U-Net-like model [2] assumes that first feature map after input image is 4 times smaller - but I suppose for phase unwrapping it's crucial not to lose spatial information by double maxpool. 
 So now I try to increase spatial resolution of all model (the smallest feature maps BxCx8x8 now are BxCx16x16)
 
-Experiments say, that
+Experiments on the same dataset say, that both models have the same nature of the losses decrease
 
+![image](https://user-images.githubusercontent.com/73649419/117009011-97dbf980-aceb-11eb-9618-502f9c4d646b.png)
+
+
+But 2nd model achieves more accuracy at the same time - maybe because spatial resolution doesn't decreases do fast (double maxpool)
+
+![image](https://user-images.githubusercontent.com/73649419/117009754-61eb4500-acec-11eb-839b-4d573c747c75.png)
 
 
 # References
