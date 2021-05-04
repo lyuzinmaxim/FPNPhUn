@@ -1,5 +1,5 @@
 # FPNPhUn
-This is my implementation of DL model solving phase unwrapping problem based on FPN [1-2]
+This is my PyTorch implementation of DL model solving phase unwrapping problem based on FPN [1-2]
 
 # 1st attempt
 
