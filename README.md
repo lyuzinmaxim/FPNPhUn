@@ -37,6 +37,16 @@ And best results can be reached using following activation/weights/norm architec
 
 ![image](https://user-images.githubusercontent.com/73649419/117353643-a7f10600-aeb0-11eb-939a-d30b24469736.png)
 
+So losses for old residual block and new for 30 epochs on the same small dataset (20 different phase images) averaged over 5 attempts with fixed random seed are:
+
+![image](https://user-images.githubusercontent.com/73649419/117362551-af69dc80-aebb-11eb-944f-061033bb2fb2.png)
+
+And metrics are:
+
+![image](https://user-images.githubusercontent.com/73649419/117362663-d6281300-aebb-11eb-89f3-fbcf7885105f.png)
+
+From this experiment it's clear (mainly due to metric comparison), that net with "new" residual blocks is learning faster.
+
 
 # References
 1. Lin, Tsung-Yi, et al. "Feature pyramid networks for object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017.
