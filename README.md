@@ -27,7 +27,18 @@ But 2nd model achieves more accuracy at the same time - maybe because spatial re
 
 ![image](https://user-images.githubusercontent.com/73649419/117153578-67fc2700-adbb-11eb-859e-3209325866b2.png)
 
+# 3rd attempt
+
+According to original paper about different residual connections [3] best residual structure to use for classification tasks is:
+
+![image](https://user-images.githubusercontent.com/73649419/117353301-403abb00-aeb0-11eb-8d66-127dc9ef09e0.png)
+
+And best results can be reached using following activation/weights/norm architecture (called "full pre-activation"):
+
+![image](https://user-images.githubusercontent.com/73649419/117353643-a7f10600-aeb0-11eb-939a-d30b24469736.png)
+
 
 # References
 1. Lin, Tsung-Yi, et al. "Feature pyramid networks for object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017.
 2. Seferbekov, Selim, et al. "Feature pyramid network for multi-class land segmentation." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops. 2018.
+3. He, Kaiming, et al. "Identity mappings in deep residual networks." European conference on computer vision. Springer, Cham, 2016.
