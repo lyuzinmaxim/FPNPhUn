@@ -51,7 +51,7 @@ class ResidualBlock(nn.Module):
 class FPNPhUn(torch.nn.Module):
   
   def __init__(self):
-    super(FPNPhUn,self).__init__()
+    super(FPNPhUn2,self).__init__()
 
     self.max_pool_2x2 = nn.MaxPool2d(kernel_size=2, stride=2)
 
@@ -74,7 +74,7 @@ class FPNPhUn(torch.nn.Module):
         stride=2)
     self.up = nn.UpsamplingNearest2d(scale_factor=2)
 
-    self.up_end = nn.Upsample(scale_factor=4,mode='bilinear',align_corners=True)
+    self.up_end = nn.Upsample(scale_factor=2,mode='bilinear',align_corners=True)
 
     self.relu = nn.ReLU(inplace=False)
 
@@ -84,25 +84,25 @@ class FPNPhUn(torch.nn.Module):
 
   def forward(self,image):
     x = self.max_pool_2x2(image)
-    x = self.max_pool_2x2(x)
-    x1 = self.block1(x) #[1, 256, 64, 64]
+    #x = self.max_pool_2x2(x)
+    x1 = self.block1(x) #[1, 256, 128, 128]
 
     x2 = self.max_pool_2x2(x1)
-    x2 = self.block2(x2) #[1, 512, 32, 32]
+    x2 = self.block2(x2) #[1, 512, 64, 64]
 
     x3 = self.max_pool_2x2(x2)
-    x3 = self.block3(x3) #[1, 1024, 16, 16]
+    x3 = self.block3(x3) #[1, 1024, 32, 32]
 
     x4 = self.max_pool_2x2(x3)
-    x4 = self.block4(x4) #[1, 2024, 8, 8]
+    x4 = self.block4(x4) #[1, 2024, 16, 16]
     
-    y4 = self.conv_1x1_4(x4)                     #[1, 256, 8, 8]
+    y4 = self.conv_1x1_4(x4)                     #[1, 256, 16, 16]
 
-    y3 = self.conv_1x1_3(x3) + self.up_trans(y4) #[1, 256, 16, 16]
+    y3 = self.conv_1x1_3(x3) + self.up_trans(y4) #[1, 256, 32, 32]
     
-    y2 = self.conv_1x1_2(x2) + self.up_trans(y3) #[1, 256, 32, 32]
+    y2 = self.conv_1x1_2(x2) + self.up_trans(y3) #[1, 256, 64, 64]
 
-    y1 = self.conv_1x1_1(x1) + self.up_trans(y2) #[1, 256, 64, 64]
+    y1 = self.conv_1x1_1(x1) + self.up_trans(y2) #[1, 256, 128, 128]
     
     z4 = self.conv_block(y4)
     z3 = self.conv_block(y3)
@@ -126,6 +126,7 @@ class FPNPhUn(torch.nn.Module):
     return x
 
     #print(x.size(),'мой вывод после "линии"')
+
     
   if __name__ == "__main__":
       image = torch.rand((1,1,256,256))
