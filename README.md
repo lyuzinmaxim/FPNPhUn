@@ -57,17 +57,29 @@ In DLPU "lower" (with the smallest spatial dimension) connections feature map is
 In this attempt I made following structure (shown below), so the model has only 77.688 trainable parameters. 
 
 1x256x256
+
    ||
+   
    V
+
 8x128x128  => 8x128x128 => 4x128x128
+
    ||             ||
+
    V              V
+
 16x64x64   => 8x64x64   => 4x64x64
+
    ||             ||
+
    V              V                      ===>(concat + upsample)16x128x128   ===> conv3x3,bn,relu,conv1x1(bottleneck),upsample ===> 1x256x256
+
 32x32x32   => 8x32x32   => 4x32x32
+
    ||             ||
+   
    V              V
+
 64x16x16   => 8x16x16   => 4x16x16
 
 
