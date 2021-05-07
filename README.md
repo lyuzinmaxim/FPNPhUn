@@ -47,8 +47,16 @@ And metrics are:
 
 From this experiment it's clear (mainly due to metric comparison), that net with "new" residual blocks is learning faster.
 
+# 4-th attempt
+
+Now I would change the layer structure of neural net. The more trainable parameters does the net have, the more complicated patterns can be learned, but the more likely the network can be overfitted. For comparison, encoder-decoder unwrapping net DLPU [4] has 1.824.937 trainable parameters, PhUn net [5] has 90.120 trainable parameters, 
+VUR-Net [6] has 21.561.430 parameters, and proposed FPNPhUn in current implementation has 78.080.528 parameters. So, most parameters belong to "lower" layers - there are connections from 1024 to 2024 layers. 
+
 
 # References
 1. Lin, Tsung-Yi, et al. "Feature pyramid networks for object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017.
 2. Seferbekov, Selim, et al. "Feature pyramid network for multi-class land segmentation." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops. 2018.
 3. He, Kaiming, et al. "Identity mappings in deep residual networks." European conference on computer vision. Springer, Cham, 2016.
+4. K. Wang, Y. Li, K. Qian, J. Di, and J. Zhao, “One-step robust deep learning phase unwrapping,” Opt. Express 27, 15100–15115 (2019).
+5. Gili Dardikman-Yoffe, Darina Roitshtain, Simcha K. Mirsky, Nir A. Turko, Mor Habaza, and Natan T. Shaked, "PhUn-Net: ready-to-use neural network for unwrapping quantitative phase images of biological cells," Biomed. Opt. Express 11, 1107-1121 (2020).
+6. Qin, Y., Wan, S., Wan, Y., Weng, J., Liu, W., & Gong, Q. (2020). Direct and accurate phase unwrapping with deep neural network. Applied optics, 59 24, 7258-7267 .
