@@ -51,6 +51,7 @@ From this experiment it's clear (mainly due to metric comparison), that net with
 
 Now I would change the layer structure of neural net. The more trainable parameters does the net have, the more complicated patterns can be learned, but the more likely the network can be overfitted. For comparison, encoder-decoder unwrapping net DLPU [4] has 1.824.937 trainable parameters, PhUn net [5] has 90.120 trainable parameters, 
 VUR-Net [6] has 21.561.430 parameters, and proposed FPNPhUn in current implementation has 78.080.528 parameters. So, most parameters belong to "lower" layers - there are connections from 1024 to 2024 layers - I guess it's too much for this task. 
+
 In DLPU "lower" (with the smallest spatial dimension) connections feature map is 8x8x256, in PhUn 32x32x32, in VUR-Net 8x8x512
 
 
