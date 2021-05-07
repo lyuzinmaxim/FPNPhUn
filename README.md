@@ -72,6 +72,13 @@ In this attempt I made following structure (shown below), so the model has only 
 
 ![image](https://user-images.githubusercontent.com/73649419/117505122-d855a480-af83-11eb-9322-a3fb5bcb7575.png)
 
+So in 50 epochs on the same small dataset (20 different phase images) averaged over 5 attempts with fixed random seed train and test losses are:
+
+![image](https://user-images.githubusercontent.com/73649419/117506868-92e6a680-af86-11eb-9417-399019a42d05.png)
+
+And corresponding metrics are:
+
+![image](https://user-images.githubusercontent.com/73649419/117506901-a134c280-af86-11eb-9c98-5e5775dc36de.png)
 
 
 # References
