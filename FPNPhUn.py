@@ -55,54 +55,56 @@ class FPNPhUn(torch.nn.Module):
 
     self.max_pool_2x2 = nn.MaxPool2d(kernel_size=2, stride=2)
 
-    self.conv_1x1_1 = conv1x1(256,256)
-    self.conv_1x1_2 = conv1x1(512,256)
-    self.conv_1x1_3 = conv1x1(1024,256)
-    self.conv_1x1_4 = conv1x1(2024,256)
+    
+    self.block1 = ResidualBlock(1,8)
+    self.block2 = ResidualBlock(8,16)
+    self.block3 = ResidualBlock(16,32)
+    self.block4 = ResidualBlock(32,64)
 
-    self.block1 = ResidualBlock(1,256)
-    self.block2 = ResidualBlock(256,512)
-    self.block3 = ResidualBlock(512,1024)
-    self.block4 = ResidualBlock(1024,2024)
+    self.conv_1x1_1 = conv1x1(8,8)
+    self.conv_1x1_2 = conv1x1(16,8)
+    self.conv_1x1_3 = conv1x1(32,8)
+    self.conv_1x1_4 = conv1x1(64,8)
 
-    self.conv_block =conv3x3block(256,128)
+    self.conv_block =conv3x3block(8,4)
 
     self.up_trans = nn.ConvTranspose2d(
-        in_channels=256,
-        out_channels=256,
+        in_channels=8,
+        out_channels=8,
         kernel_size=2,
         stride=2)
     self.up = nn.UpsamplingNearest2d(scale_factor=2)
 
-    self.up_end = nn.Upsample(scale_factor=4,mode='bilinear',align_corners=True)
+    
 
     self.relu = nn.ReLU(inplace=False)
 
-    self.out = conv3x3(512,512)
-    self.bn = nn.BatchNorm2d(512)
-    self.outout = conv1x1(512,1)
+    self.out = conv3x3(16,16)
+    self.bn = nn.BatchNorm2d(16)
+    self.outout = conv1x1(16,1)
+    self.up_end = nn.Upsample(scale_factor=2,mode='bilinear',align_corners=True)
 
   def forward(self,image):
     x = self.max_pool_2x2(image)
-    x = self.max_pool_2x2(x)
-    x1 = self.block1(x) #[1, 256, 64, 64]
+    #x = self.max_pool_2x2(x)
+    x1 = self.block1(x) #[1, 8, 128, 128]
 
     x2 = self.max_pool_2x2(x1)
-    x2 = self.block2(x2) #[1, 512, 32, 32]
+    x2 = self.block2(x2) #[1, 16, 64, 64]
 
     x3 = self.max_pool_2x2(x2)
-    x3 = self.block3(x3) #[1, 1024, 16, 16]
+    x3 = self.block3(x3) #[1, 32, 32, 32]
 
     x4 = self.max_pool_2x2(x3)
-    x4 = self.block4(x4) #[1, 2024, 8, 8]
+    x4 = self.block4(x4) #[1, 64, 16, 16]
     
-    y4 = self.conv_1x1_4(x4)                     #[1, 256, 8, 8]
+    y4 = self.conv_1x1_4(x4)                     #[1, 8, 16, 16]
 
-    y3 = self.conv_1x1_3(x3) + self.up_trans(y4) #[1, 256, 16, 16]
+    y3 = self.conv_1x1_3(x3) + self.up_trans(y4) #[1, 8, 32, 32]
     
-    y2 = self.conv_1x1_2(x2) + self.up_trans(y3) #[1, 256, 32, 32]
+    y2 = self.conv_1x1_2(x2) + self.up_trans(y3) #[1, 8, 64, 64]
 
-    y1 = self.conv_1x1_1(x1) + self.up_trans(y2) #[1, 256, 64, 64]
+    y1 = self.conv_1x1_1(x1) + self.up_trans(y2) #[1, 8, 128, 128]
     
     z4 = self.conv_block(y4)
     z3 = self.conv_block(y3)
@@ -110,11 +112,11 @@ class FPNPhUn(torch.nn.Module):
     z1 = self.conv_block(y1)
 
     x = torch.cat([
-                   self.up(self.up(self.up(z4))),
-                   self.up(self.up(z3)),
-                   self.up(z2),
-                   z1
-                ],1)
+                    self.up(self.up(self.up(z4))),
+                    self.up(self.up(z3)),
+                    self.up(z2),
+                    z1
+                 ],1)
     
     x = self.out(x)
     x = self.bn(x)
