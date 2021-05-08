@@ -81,6 +81,10 @@ And corresponding metrics are:
 ![image](https://user-images.githubusercontent.com/73649419/117506901-a134c280-af86-11eb-9c98-5e5775dc36de.png)
 
 
+I've learned that model and PhUn [5] on small dataset (20 obj) for 100 epochs just to see how they will be overfitted. Losses and metrics are:
+
+
+
 # References
 1. Lin, Tsung-Yi, et al. "Feature pyramid networks for object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017.
 2. Seferbekov, Selim, et al. "Feature pyramid network for multi-class land segmentation." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops. 2018.
