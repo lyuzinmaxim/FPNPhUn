@@ -83,7 +83,10 @@ And corresponding metrics are:
 
 I've learned that model and PhUn [5] on small dataset (20 obj) for 100 epochs just to see how they will be overfitted. Losses and metrics are:
 
+# 5-th attempt
 
+Because good example of tricks in image-to-image nets are in segmentation nets, from [7] it's reasonable to use dilated (atrous) convolutions instead of any variants of pooling.
+Now i will compare net from 4-th attempt to this implementation (just replace maxpool layers with dilated conv) on small dataset.
 
 # References
 1. Lin, Tsung-Yi, et al. "Feature pyramid networks for object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017.
@@ -92,3 +95,4 @@ I've learned that model and PhUn [5] on small dataset (20 obj) for 100 epochs ju
 4. K. Wang, Y. Li, K. Qian, J. Di, and J. Zhao, “One-step robust deep learning phase unwrapping,” Opt. Express 27, 15100–15115 (2019).
 5. Gili Dardikman-Yoffe, Darina Roitshtain, Simcha K. Mirsky, Nir A. Turko, Mor Habaza, and Natan T. Shaked, "PhUn-Net: ready-to-use neural network for unwrapping quantitative phase images of biological cells," Biomed. Opt. Express 11, 1107-1121 (2020).
 6. Qin, Y., Wan, S., Wan, Y., Weng, J., Liu, W., & Gong, Q. (2020). Direct and accurate phase unwrapping with deep neural network. Applied optics, 59 24, 7258-7267 .
+7. Chen, Liang-Chieh, et al. "Deeplab: Semantic image segmentation with deep convolutional nets, atrous convolution, and fully connected crfs." IEEE transactions on pattern analysis and machine intelligence 40.4 (2017): 834-848.
