@@ -83,6 +83,9 @@ And corresponding metrics are:
 
 I've learned that model and PhUn [5] on small dataset (20 obj) for 100 epochs just to see how they will be overfitted. Losses and metrics are:
 
+![image](https://user-images.githubusercontent.com/73649419/117554628-9438d180-b061-11eb-809a-7f34b2f0ccda.png)
+![image](https://user-images.githubusercontent.com/73649419/117554636-a286ed80-b061-11eb-821b-c67344c4512f.png)
+
 
 
 # References
