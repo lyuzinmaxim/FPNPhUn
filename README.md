@@ -90,7 +90,7 @@ Now i will compare net from 4-th attempt to this implementation on small dataset
 
 # 6-th attempt
 
-I've rewrited and reorganized my model - and chosen max feature map depth 256 channels, so the model does have 1.8 M trainable parameters - and I compare my model with DLPU on small dataset (20 obj) for 100 epochs.
+I've rewrited and reorganized my model - and chosen max feature map depth 256 channels, so the model does have 1.8 M trainable parameters - and I compare my model with DLPU [4] on small dataset (20 obj) for 100 epochs.
 
 
 
