@@ -103,6 +103,14 @@ And metrics:
 So, on small dataset FPNPhUn model can be learned much faster than DLPU model - it can be got from metrics. And due to correct residual connections in FPNPhUn train loss decreases much faster too. Test loss can't be normal understood due to small dataset.
 
 
+# 7-th attempt
+
+Now I should say, that in [2] was not used maxpooling, but convolution with stride 2 instead. In first up-bottom steps I will use conv3x3 with replicated padding=1 and stride=2.
+I compare "convolutional downsampling"-model with "maxpool downsampling"-model on small dataset (100 obj) for 30 epochs, averaged over 5 attempts.
+
+
+
+
 # References
 1. Lin, Tsung-Yi, et al. "Feature pyramid networks for object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017.
 2. Seferbekov, Selim, et al. "Feature pyramid network for multi-class land segmentation." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops. 2018.
