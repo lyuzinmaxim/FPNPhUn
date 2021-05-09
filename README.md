@@ -105,10 +105,16 @@ So, on small dataset FPNPhUn model can be learned much faster than DLPU model - 
 
 # 7-th attempt
 
-Now I should say, that in [2] was not used maxpooling, but convolution with stride 2 instead. In first up-bottom steps I will use conv3x3 with replicated padding=1 and stride=2.
+Now I should say, that I made an error: in [2] was not used maxpooling, but convolution with stride 2 instead. In first up-bottom steps I will use conv3x3 with replicated padding=1 and stride=2.
 I compare "convolutional downsampling"-model with "maxpool downsampling"-model on small dataset (100 obj) for 30 epochs, averaged over 5 attempts.
 
+![image](https://user-images.githubusercontent.com/73649419/117583994-04536000-b113-11eb-968c-f6dc2e33eb2c.png)
 
+And metrics:
+
+![image](https://user-images.githubusercontent.com/73649419/117584008-0e755e80-b113-11eb-9e64-4b55f48fe2f3.png)
+
+I can say, that training loss with maxpooling decreases faster, because convolution layers (with stride=2) need to learn first - and at the following epochs training loss of conv-downsample model is smaller - and test loss too. It's important too, that conv-downsample model achieves more accuracy.
 
 
 # References
