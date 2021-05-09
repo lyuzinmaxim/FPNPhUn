@@ -92,6 +92,13 @@ Now i will compare net from 4-th attempt to this implementation on small dataset
 
 I've rewrited and reorganized my model - and chosen max feature map depth 256 channels, so the model does have 1.8 M trainable parameters - and I compare my model with DLPU [4] on small dataset (20 obj) for 100 epochs.
 
+Losses are:
+
+![image](https://user-images.githubusercontent.com/73649419/117582142-3b247880-b109-11eb-8cce-7c81124c1d27.png)
+
+And metrics:
+
+![image](https://user-images.githubusercontent.com/73649419/117582163-5b543780-b109-11eb-8d2f-8312b4f0505e.png)
 
 
 # References
