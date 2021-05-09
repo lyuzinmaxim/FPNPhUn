@@ -88,6 +88,12 @@ I've learned that model and PhUn [5] on small dataset (20 obj) for 100 epochs ju
 Because good example of tricks in image-to-image nets are in segmentation nets, from [7] it's reasonable to use dilated (atrous) convolutions instead of any variants of pooling-conv-unpooling.
 Now i will compare net from 4-th attempt to this implementation on small dataset.
 
+# 6-th attempt
+
+I've rewrited and reorganized my model - and chosen max feature map depth 256 channels, so the model does have 1.8 M trainable parameters - and I compare my model with DLPU on small dataset (20 obj) for 100 epochs.
+
+
+
 # References
 1. Lin, Tsung-Yi, et al. "Feature pyramid networks for object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017.
 2. Seferbekov, Selim, et al. "Feature pyramid network for multi-class land segmentation." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops. 2018.
