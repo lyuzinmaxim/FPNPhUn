@@ -90,7 +90,7 @@ Now i will compare net from 4-th attempt to this implementation on small dataset
 
 # 6-th attempt
 
-I've rewrited and reorganized my model - and chosen max feature map depth 256 channels, so the model does have 1.8 M trainable parameters - and I compare my model with DLPU [4] on small dataset (20 obj) for 100 epochs.
+I've rewrited and reorganized my model - and chosen max feature map depth 256 channels, so the model does have 1.8 M trainable parameters - and I compare my model with DLPU [4] on small dataset (100 obj) for 100 epochs.
 
 Losses are:
 
@@ -99,6 +99,8 @@ Losses are:
 And metrics:
 
 ![image](https://user-images.githubusercontent.com/73649419/117582163-5b543780-b109-11eb-8d2f-8312b4f0505e.png)
+
+So, on small dataset FPNPhUn model can be learned much faster than DLPU model - it can be got from metrics. And due to correct residual connections in FPNPhUn train loss decreases much faster too. Test loss can't be normal understood due to small dataset.
 
 
 # References
