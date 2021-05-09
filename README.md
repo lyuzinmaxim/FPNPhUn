@@ -83,6 +83,11 @@ And corresponding metrics are:
 
 I've learned that model and PhUn [5] on small dataset (20 obj) for 100 epochs just to see how they will be overfitted. Losses and metrics are:
 
+![image](https://user-images.githubusercontent.com/73649419/117580305-06f88a00-b100-11eb-9111-a20d53376061.png)
+![image](https://user-images.githubusercontent.com/73649419/117580313-124bb580-b100-11eb-8428-791ea3d04161.png)
+
+
+
 # 5-th attempt
 
 Because good example of tricks in image-to-image nets are in segmentation nets, from [7] it's reasonable to use dilated (atrous) convolutions instead of any variants of pooling-conv-unpooling.
