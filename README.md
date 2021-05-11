@@ -117,6 +117,10 @@ And metrics:
 I can say, that training loss with maxpooling decreases faster, because convolution layers (with stride=2) need to learn first - and at the following epochs training loss of conv-downsample model is smaller - and test loss too. It's important too, that conv-downsample model achieves more accuracy.
 
 
+# Training details
+
+Succeed train to zero cost (0.0001) with SGD m=0.9 lr=0.0001
+
 # References
 1. Lin, Tsung-Yi, et al. "Feature pyramid networks for object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017.
 2. Seferbekov, Selim, et al. "Feature pyramid network for multi-class land segmentation." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops. 2018.
