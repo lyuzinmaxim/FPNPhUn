@@ -119,7 +119,7 @@ I can say, that training loss with maxpooling decreases faster, because convolut
 
 # Training details
 
-Succeed train to zero cost (0.0001) with SGD m=0.9 lr=0.0001
+Succeed train to zero cost (0.0314) at epoch 500 with SGD m=0.9 lr=0.0001
 
 # References
 1. Lin, Tsung-Yi, et al. "Feature pyramid networks for object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017.
