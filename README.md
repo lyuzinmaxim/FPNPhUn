@@ -133,7 +133,7 @@ Methods based on different structures:
 
 * Using of dilated convolutions like it's described in [7] - top-down and down-top pathes and no more needed (maybe)
 
-* Using of transformers - it's new approach in computer vision, and has SOTA results in depth estimation and pretty nice results instance segmentation [8] - key point is that model isn't based on convolutional operations, that have limited receptive field. Tokens of transformer model have reseptive field as big as a whole picture
+* Using of transformers - it's new approach in computer vision, and has SOTA results in depth estimation and pretty nice results in instance segmentation [8] - key point is that model isn't based on convolutional operations, that have limited receptive field. Tokens of transformer model have reseptive field as big as a whole picture
 
 # Training details
 
