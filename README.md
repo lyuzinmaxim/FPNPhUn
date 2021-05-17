@@ -116,6 +116,24 @@ And metrics:
 
 I can say, that training loss with maxpooling decreases faster, because convolution layers (with stride=2) need to learn first - and at the following epochs training loss of conv-downsample model is smaller - and test loss too. It's important too, that conv-downsample model achieves more accuracy.
 
+I've tried to train that model on bigger dataset (1000 images, 0.7/0.3 train/test), and it's important, that model doesn't have big resetive field and model doesn't have enough conv layers to learn data distribution after FPN (concatenations) - so, that model is pretty good for instance segmentation, but not for phase unwrapping. I hope, that following changes can increase quality of a net:
+
+![image](https://user-images.githubusercontent.com/73649419/118486053-d75e0900-b721-11eb-81b7-3abc38ff6d3c.png)
+
+
+FPNPhUn-structure based methods:
+
+* Add extra conv layers to "head" module
+
+* Layers are upsampled before concatenation using bilinear interpolation - so they doesn't have trainable params - transposed convolutions can be used instead of  
+
+* Concatenations are used, when all feature maps have size INPUT_H/2, INPUT_W/2 (3 of them are one or more times interpolated) - so more spatial information is in those part of after-concat-feature-map, that have has minimal receptive field. It's good to try concat in minimum sizes using maxpool/stride=2 for "top" layers, and than to use trainable trasnposed convolution (like "up-blocks" in PhUn, DLPU or VUR-Net)
+
+Methods based on different structures:
+
+* Using of dilated convolutions like it's described in [7] - top-down and down-top pathes and no more needed (maybe)
+
+* Using of transformers - it's new approach in computer vision, and has SOTA results in depth estimation and pretty nice results instance segmentation [8] - key point is that model isn't based on convolutional operations, that have limited receptive field. Tokens of transformer model have reseptive field as big as a whole picture
 
 # Training details
 
@@ -129,3 +147,4 @@ Succeed train to zero cost (0.0314) at epoch 500 with SGD m=0.9 lr=0.0001
 5. Gili Dardikman-Yoffe, Darina Roitshtain, Simcha K. Mirsky, Nir A. Turko, Mor Habaza, and Natan T. Shaked, "PhUn-Net: ready-to-use neural network for unwrapping quantitative phase images of biological cells," Biomed. Opt. Express 11, 1107-1121 (2020).
 6. Qin, Y., Wan, S., Wan, Y., Weng, J., Liu, W., & Gong, Q. (2020). Direct and accurate phase unwrapping with deep neural network. Applied optics, 59 24, 7258-7267 .
 7. Chen, Liang-Chieh, et al. "Deeplab: Semantic image segmentation with deep convolutional nets, atrous convolution, and fully connected crfs." IEEE transactions on pattern analysis and machine intelligence 40.4 (2017): 834-848.
+8. Ranftl, R., Bochkovskiy, A., & Koltun, V. (2021). Vision Transformers for Dense Prediction. arXiv preprint arXiv:2103.13413.
