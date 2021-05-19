@@ -12,7 +12,7 @@ So like it's shown below my output (in [2] output size was 4 times smaller than 
 
 ![output1](https://user-images.githubusercontent.com/73649419/117002845-60b61a00-ace4-11eb-8ad2-c72b4c55ae72.jpg)
 
-All attempts are in different branchs
+All attempts are in different branchs - and best solution too.
 
 
 # References
