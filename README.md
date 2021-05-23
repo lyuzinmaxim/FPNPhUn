@@ -60,17 +60,17 @@ In this attempt I made following structure (shown below), so the model has only 
    ||
    V
 8x128x128  => 8x128x128 => 4x128x128
-   ||             ||
-   V              V
+   ||             /\
+   V              ||
 16x64x64   => 8x64x64   => 4x64x64
-   ||             ||
-   V              V                      ===>(concat + upsample)16x128x128   ===> conv3x3,bn,relu,conv1x1(bottleneck),upsample ===> 1x256x256
+   ||             /\
+   V              ||                      ===>(concat + upsample)16x128x128   ===> conv3x3,bn,relu,conv1x1(bottleneck),upsample ===> 1x256x256
 32x32x32   => 8x32x32   => 4x32x32
-   ||             ||
-   V              V
+   ||             /\
+   V              ||
 64x16x16   => 8x16x16   => 4x16x16
 
-![image](https://user-images.githubusercontent.com/73649419/117505122-d855a480-af83-11eb-9322-a3fb5bcb7575.png)
+![image](https://user-images.githubusercontent.com/73649419/119273174-55367e80-bc12-11eb-8ec3-45213bb37d19.png)
 
 So in 50 epochs on the same small dataset (20 different phase images) averaged over 5 attempts with fixed random seed train and test losses are:
 
