@@ -123,11 +123,11 @@ I've tried to train that model on bigger dataset (1000 images, 0.7/0.3 train/tes
 
 FPNPhUn-structure based methods:
 
-* Add extra conv layers to "head" module
+* (b)Add extra conv layers to "head" module
 
-* Layers are upsampled before concatenation using bilinear interpolation - so they doesn't have trainable params - transposed convolutions can be used instead of  
+* (a)Layers are upsampled before concatenation using bilinear interpolation - so they doesn't have trainable params - transposed convolutions can be used instead of  
 
-* Concatenations are used, when all feature maps have size INPUT_H/2, INPUT_W/2 (3 of them are one or more times interpolated) - so more spatial information is in those part of after-concat-feature-map, that have has minimal receptive field. It's good to try concat in minimum sizes using maxpool/stride=2 for "top" layers, and than to use trainable trasnposed convolution (like "up-blocks" in PhUn, DLPU or VUR-Net)
+* (c) Concatenations are used, when all feature maps have size INPUT_H/2, INPUT_W/2 (3 of them are one or more times interpolated) - so more spatial information is in those part of after-concat-feature-map, that have has minimal receptive field. It's good to try concat in minimum sizes using maxpool/stride=2 for "top" layers, and than to use trainable trasnposed convolution (like "up-blocks" in PhUn, DLPU or VUR-Net)
 
 Methods based on different structures:
 
