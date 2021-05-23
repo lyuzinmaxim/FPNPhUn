@@ -135,6 +135,14 @@ Methods based on different structures:
 
 * Using of transformers - it's new approach in computer vision, and has SOTA results in depth estimation and pretty nice results in instance segmentation [8] - key point is that model isn't based on convolutional operations, that have limited receptive field. Tokens of transformer model have reseptive field as big as a whole picture
 
+
+7a-attempt
+
+So I've tried to use transposed convolutions before concat - and model does have less "wrong" patterns in the output (comparing to 1st row) - maybe it's better to do so. 
+
+![image](https://user-images.githubusercontent.com/73649419/119274469-bd885e80-bc18-11eb-9bc0-417e621dee8a.png)
+
+
 # Training details
 
 Succeed train to zero cost (0.0314) at epoch 500 with SGD m=0.9 lr=0.0001
